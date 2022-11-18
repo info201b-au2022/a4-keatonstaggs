@@ -1,45 +1,67 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Racial Inequality within Incarceration "
+author: "Keaton Staggs"
+date: '11-22-2022'
 output: html_document
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE}
+```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 source("../source/a4-helpers.R")
 source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
+In this report, incarceration rate data is wrangled to reveal possible inequalities regarding specific groups of people. In particular, charts are plotted to identify possible occurrences of racism in the United States prison system through the examination of prison populations. The report has a focus on how prison race populations compare to each other and how populations differ by location.
 
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
 
 ## Introduction 
-[TODO]
+Within the incarceration trends data set, one major component is race and the comparison of prison population between multiple different races. In _Data Feminism_, a focus is placed on putting pressure towards the unequal power structures that result in oppression for certain groups of people. In this data set, prison population data will be used to reveal possible racial inequalities in hopes of using these findings for justice. One major aspect of the _Vera Institute_ is creating justice through challenging racial disparity within incarceration. In this report, data will be wrangled to reveal any disparities regarding race. Direct stakeholders include the individuals that utilize the data set to identify inequalities and take action for justice. Indirect stakeholders include the many individuals currently in imprisonment that may find justice through research into the data set. Research questions for this report include: 
+
+- How has the United States prison population changed from 1970 to 2018?
+
+- How does the growth of the prison population compare for certain states in the U.S.?
+
+- How does the change in prison population compare between black and white people as years increase?
+
+- What is the difference in black prison population for each state in the United States?
 
 ## Data Summary 
-[TODO]
+For this section I decided to create three functions to compare the relationship between race and prison population. For the first function, `pop_sum()`, I used `colSums()` to identify the totals for `black_pop_15to64` and `white_pop_15to64` in the year 2018. From this function I discovered that the `white_pop_15to64` variable is greater by **100,162,058**. Seeing as the white population is larger by an enormous amount reveals possible racial inequality within the prison system. The second function, `black_pop_high()`, displays the state and year for when the `black_pop_15to64` variable was at maximum. This function returns the state of **New York** in the year **2000**. Using the results from the third function, `white_pop_high()`, comparisons can be made to identify possible inequality. `white_pop_high()` returns the maximum of the `white_pop_15to64` variable, which was the state of **California** in **1990**. Functions two and three are crucial to understand where and when prison populations are highest for certain races. The returned values can be used to analyze racial inequality and the progression of this inequality as the years increase. 
 
-[TODO ... other sections ... See Canvas for details]
 
-_All the very best with your work!_
+## Growth of the U.S. Prison Population
+```{r echo=FALSE, warning=FALSE}
+plot_jail_pop_for_us()
+```
+
+**Research Question:** How has the United States prison population changed from 1970 to 2018? Revealed through this bar chart, the jail population in the United States was steadily increasing from 1970 to 2008, reaching close to 800,000 inmates. After 2008, the jail population began to fluctuate between decreasing and increasing. In 1970 the population was under 200,000 and in 2018 the population sits at over 700,000. Although the population in 2018 is lower than the all-time peak in 2008, the jail population has grown significantly since 1970. Additionally, the jail population has remained more constant after 2008, compared to the consistent increase of population from 1970 to 2008.
+
+
+## Growth of Prison Population by State
+```{r echo=FALSE, warning=FALSE}
+plot_jail_pop_by_states(states)
+```
+
+**Research Question:** How does the growth of the prison population compare for certain states in the U.S.? This line graph displays the growth of prison population for Arizona, Maryland, Texas, and Washington State. Each state is represented by a color, which can be referenced from the legend on the right. Revealed from this data visualization, the state of Alabama had the peak highest prison population, reaching greater than 16,000 people. The second highest state was Arizona, reaching close to 16,000 at one point in time. Visible with each line, as years increase towards the present, prison populations have been decreasing in each selected state after seeing a steady increase in earlier years. 
+
+
+
+
+
+## Black vs. White Prison Population by Year
+```{r echo=FALSE, warning=FALSE}
+plot_scatter()
+plot_scatter_white()
+```
+
+**Research Question:** How does the change in prison population compare between black and white people as years increase? Referring to both charts, the black prison population steadily increases as the years increase from 1990 to 2018, while the white prison population first increases then decreases. In the white population chart, the population begins with a steady increase, remains constant for a few years, then starts to steadily decrease around 2010. In contrast, the black population chart displays that the population never sees a decrease. Examining both charts, possible instances of inequality regarding race may arise as the years come closer to the present. White prison population begins to steadily decline, while the black prison population reamins steadily increasing. 
+
+
+## United States Map of Black Prison Population
+```{r echo=FALSE, warning=FALSE}
+plot_map()
+```
+
+**Research Question:** What is the difference in black prison population for each state in the United States? This United States map displays the population of black people in prison for each state in 2018. The legend in the bottom right of the visualization includes the represented value for each color tone on the map. Smaller populations have a darker tone, while larger populations have a lighter blue color. Demonstrated from the graph, Texas has the lightest color of blue, indicating Texas had the highest black prison population in the year 2018. However, as shown in the graph, much of the states throughout the nation have a very dark shade of blue, indicating these states have low populations of imprisoned black people. 
+
 
